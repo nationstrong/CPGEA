@@ -26,12 +26,13 @@ df.muta.melt$FOXA1 = rep('mutation', nrow(df.muta.melt))
 df.melt = rbind(df.norm.melt, df.muta.melt)
 
 # visualization of TIMER
-jpeg(filename = 'TIMER_boxplot.jpg', width = 6, height = 4, units = 'in', res = 300)
+jpeg(filename = 'TIMER_boxplot.jpg', width = 8, height = 6, units = 'in', res = 300)
 ggplot(data = df.melt, aes(x = cell.type, y = percentage, fill = FOXA1)) + geom_boxplot() + 
   theme_minimal() + 
   labs(title = 'TIMER deconvolution of CPGEA cohort', 
        x = '', y = 'percentage',
-       fill = 'FOXA1')
+       fill = 'FOXA1')+
+  theme(axis.text.x = element_text(angle = 30, hjust = 1))
 dev.off()
 
 
