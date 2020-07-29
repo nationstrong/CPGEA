@@ -13,7 +13,7 @@ df.muta.mtx = as.matrix(df.muta[,-c(1:2)])
 
 # define function for transformation
 fpkmToTpm <- function(fpkm) {
-  exp(log(fpkm) - log(sum(fpkm)) + log(1e6))
+  (2^fpkm) * 1e6 / sum(2^fpkm)
 }
 
 # apply transformation on matrix
