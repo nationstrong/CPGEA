@@ -4,7 +4,7 @@ library(ggplot2)
 library(reshape2)
 
 # set work director
-setwd('/home/guoqiang/Documents/bioinfo/CPGEA/deconvolution/CIBERSORT')
+setwd('/afs/crc.nd.edu/user/y/ygu8/project/CPGEA/deconvolution/CIBERSORT')
 
 # import datasets
 df.norm = read.csv('CIBERSORT_norm.csv', row.names = 1,

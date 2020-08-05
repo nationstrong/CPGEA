@@ -3,7 +3,7 @@ library(immunedeconv)
 rm(list = ls())
 
 # set work director
-setwd('/home/guoqiang/Documents/bioinfo/CPGEA/')
+setwd('/afs/crc.nd.edu/user/y/ygu8/project/CPGEA')
 
 # import dataset
 df.norm.tpm = read.csv('LuXin_6176/FOXA1_normal_expr_TPM.csv',

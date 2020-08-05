@@ -1,7 +1,7 @@
 rm(list=ls())
 
 # set work dir
-setwd('/home/guoqiang/Documents/bioinfo/CPGEA/LuXin_6176/')
+setwd('/afs/crc.nd.edu/user/y/ygu8/project/CPGEA/LuXin_6176')
 
 # import datasets
 df.norm = read.csv('FOXA1_normal_expr_log2FPKM.csv', header = T, stringsAsFactors = F, check.names = F)

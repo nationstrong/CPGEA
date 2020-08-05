@@ -2,8 +2,7 @@ library(immunedeconv)
 rm(list = ls())
 
 # set work director
-setwd('/home/guoqiang/Documents/bioinfo/CPGEA/')
-
+setwd('/afs/crc.nd.edu/user/y/ygu8/project/CPGEA')
 # load CIBERSORT 
 set_cibersort_binary("deconvolution/CIBERSORT/source/CIBERSORT.R")
 set_cibersort_mat("deconvolution/CIBERSORT/source/LM22.txt")

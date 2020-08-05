@@ -4,13 +4,17 @@ library(ggplot2)
 library(reshape2)
 
 # set work director
-setwd('/home/guoqiang/Documents/bioinfo/CPGEA/deconvolution/TIMER')
+setwd('/afs/crc.nd.edu/user/y/ygu8/project/CPGEA/deconvolution/TIMER')
 
 # import datasets
 df.norm = read.csv('TIMER_norm.csv', row.names = 1,
                    header = T, stringsAsFactors = F, check.names = F)
 df.muta = read.csv('TIMER_muta.csv', row.names = 1,
                    header = T, stringsAsFactors = F, check.names = F)
+rownames(df.norm) = df.norm$cell_type
+rownames(df.muta) = df.muta$cell_type
+df.norm = df.norm[,c(-1)]
+df.muta = df.muta[,c(-1)]
 df.norm = t(df.norm)
 df.muta = t(df.muta)
 
