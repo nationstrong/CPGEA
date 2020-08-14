@@ -25,10 +25,36 @@ df.muta.melt$FOXA1 = rep('mutation', nrow(df.muta.melt))
 
 df.melt = rbind(df.norm.melt, df.muta.melt)
 
+#conduct t.test
+p.list <- c()
+for (i in c(1:ncol(df.norm))){
+  tt <- t.test(df.norm[,i],df.muta[,i])
+  tp <- round(tt$p.value,3)
+  if(is.na(tp) == F){
+   star = 'n.s'
+    if(tp < 0.05){
+     star = '*'
+      if(tp < 0.01){
+       star = '**'
+        if(tp < 0.001){
+         star = '***'
+        }
+      }
+    }
+  p.list <- c(p.list,paste0('p=',tp,'\n',star))
+ }else{
+ p.list <- c(p.list,"N.A")
+ }
+}
+
+gene_names <- colnames(df.norm)
+df.text <- data.frame(gene = gene_names, pval = p.list, val = rep(max(df.melt[,3])*1.1,ncol(df.norm)))
+
 # visualization of CIBERSORT
-jpeg(filename = 'CIBERSORT_abs_boxplot.jpg', width = 10, height = 7, units = 'in', res = 300)
+jpeg(filename = 'CIBERSORT_abs_boxplot.jpg', width = 12, height = 7, units = 'in', res = 300)
 ggplot(data = df.melt, aes(x = cell.type, y = percentage, fill = FOXA1)) + geom_boxplot() + 
   theme_minimal() + 
+  geom_text(data = df.text,aes(x = gene, y = val, label = pval), inherit.aes = FALSE, size = 2.5) +
   labs(title = 'CIBERSORT abs deconvolution of CPGEA cohort', 
        x = '', y = 'absolute level (AU)',
        fill = 'FOXA1') +
